@@ -21,6 +21,21 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    NSMutableAttributedString *attributedContent = [[NSMutableAttributedString alloc] initWithString:@"" attributes:nil];
+
+    NSDictionary *handleAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:13.f],
+                                        NSForegroundColorAttributeName: [UIColor redColor] };
+    NSDictionary *bodyAttributes = @{ NSFontAttributeName: [UIFont systemFontOfSize:13.f],
+                                      NSForegroundColorAttributeName: [UIColor darkGrayColor] };
+
+    NSAttributedString *handle = [[NSAttributedString alloc] initWithString:@"handle" attributes:handleAttributes];
+    NSAttributedString *body = [[NSAttributedString alloc] initWithString:@"and a body here" attributes:bodyAttributes];
+
+    [attributedContent appendAttributedString:handle];
+    [attributedContent appendAttributedString:[[NSAttributedString alloc] initWithString:@" " attributes:nil]];
+    [attributedContent appendAttributedString:body];
+
+    self.label.attributedText = attributedContent;
     self.label.delegate = self;
 }
 
